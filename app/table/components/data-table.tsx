@@ -20,8 +20,9 @@ export type PaginationState = {
   pageSize: number;
 };
 import { Pagination } from "./pagination";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import usePrevious from "./usePrevious";
+import { useTableContext } from "../context";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
@@ -47,19 +48,14 @@ export function DataTable<TData, TValue>({
   onSortingChange,
   sorting,
 }: DataTableProps<TData, TValue>) {
-  //   console.log("data ", data);
-  const [rowSelection, setRowSelection] = React.useState({});
-  const [currentPage, setCurrentPage] = useState(pagination.pageIndex);
-  console.log("current page pagination", pagination.pageIndex);
-  const previousPage = usePrevious(currentPage);
-  console.log("row Selection", rowSelection);
+  const { setState, state } = useTableContext();
   const table = useReactTable({
     data,
     columns,
     manualPagination: true,
-    manualSorting: true,
+    // manualSorting: true,
     onPaginationChange,
-    onSortingChange,
+    // onSortingChange,
     // autoResetAll: false,
     // enableRowSelection: false,
     // defaultPageSize: 10,
@@ -84,37 +80,47 @@ export function DataTable<TData, TValue>({
     // showPageSizeOptions: true,
     // showPageSizeJump: true,
     getRowId: (row: any) => row.id,
+    // autoResetAll: false,
     // enableMultiRowSelection: false,
     // onRowSelectionChange: (data) => UpdateRowFn(data),
     // onRowSelectionChange: setRowSelection,
-    state: { pagination, sorting },
+    state: { pagination },
     pageCount,
     // onPaginationChange
     getCoreRowModel: getCoreRowModel(),
   });
-  //   console.log("IsAllRowsSelected", table.getIsAllRowsSelected());
-  //   //   console.log("Selected Rows", table.toggleAllRowsSelected());
+  console.log(
+    "****************************************************************"
+  );
+  console.count("render");
+  // console.log("IsAllRowsSelected", table.getIsAllRowsSelected());
+  const isAllrowSeleted = table.getIsAllRowsSelected();
+  // console.log("data", data);
+  const idDatas = data
+    .map((item: any) => item.id)
+    .reduce((accum: any, value: any) => {
+      accum[value] = true;
+      return accum;
+    }, {});
 
-  //   console.log("Get Current Page  Selected row ", table.getSelectedRowModel());
-  //   console.log("All Page sleected", table.getIsAllPageRowsSelected());
-
-  const isAllSelected = table.getIsAllPageRowsSelected();
-  //   console.log("Get All selected rows", table.getState().rowSelection);
-
-  useEffect(() => {
-    // table.setRowSelection({ 1: true, 2: true, 3: true });
-    if (isAllSelected === false) {
-      //   table.resetRowSelection();
-    }
-    if (isAllSelected === true) {
-    }
-  }, [isAllSelected]);
+  const allSelected = useMemo(() => isAllrowSeleted, [isAllrowSeleted]);
 
   useEffect(() => {
-    // console.log("Previous Page", previousPage);
+    setState((prev) => ({
+      ...prev,
+      prevIndex: prev.pageIndex,
+      pageIndex: pagination.pageIndex,
+    }));
   }, [pagination.pageIndex]);
-  console.log("Current Page", currentPage);
 
+  useEffect(() => {
+    if (state.isAllSelected) {
+      table.setRowSelection(idDatas);
+    }
+  }, [state.isAllSelected, allSelected, isAllrowSeleted]);
+
+  console.log("Selected Rowa", table.getState().rowSelection);
+  console.log("All selected", state);
   return (
     <div className="rounded-md border">
       <Table>

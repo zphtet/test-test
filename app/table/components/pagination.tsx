@@ -16,7 +16,7 @@ export const Pagination = ({ tableLib, sizes }) => (
       ◀️
     </button>
     <span>{`page ${
-      tableLib.getState().pagination.pageIndex + 1
+      tableLib.getState().pagination.pageIndex
     } of ${tableLib.getPageCount()}`}</span>
     <button disabled={!tableLib.getCanNextPage()} onClick={tableLib.nextPage}>
       ▶️

@@ -1,5 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { ColumnDef } from "@tanstack/react-table";
+import { useTableContext } from "../context";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -14,13 +15,24 @@ export const columns: ColumnDef<Payment>[] = [
     id: "select",
     header: ({ table }) => {
       //   console.log("table row selected", table.getSelectedRowModel());
+      // console.log("table", table.getIsAllRowsSelected());
+      const isAllSelected = table.getIsAllRowsSelected();
+      const { state, setState } = useTableContext();
+      // console.log("PREV STATE", state);
       return (
         <Checkbox
           checked={
             table.getIsAllPageRowsSelected() ||
             (table.getIsSomePageRowsSelected() && "indeterminate")
           }
-          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          onCheckedChange={(value) => {
+            table.toggleAllPageRowsSelected(!!value);
+            setState((prev) => ({
+              ...prev,
+              isAllSelected: !isAllSelected,
+            }));
+            // console.log("AFTER STATE", state);
+          }}
           aria-label="Select all"
         />
       );
