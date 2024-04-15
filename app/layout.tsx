@@ -30,6 +30,7 @@ export default function RootLayout({
             <div
               style={{
                 display: "flex",
+                flexWrap: "wrap",
                 gap: "30px",
                 justifyContent: "flex-end",
               }}
@@ -44,6 +45,8 @@ export default function RootLayout({
               <Link href={"/text"}>Text </Link>
               <Link href={"/parallax"}>Parallax</Link>
               <Link href={"/table"}>Table</Link>
+              <Link href={"/non-recursive"}>Non Recursive</Link>
+              <Link href={"/comments"}>Comments</Link>
             </div>
             {/* <PageTransitionWrapper>{children}</PageTransitionWrapper> */}
             {children}
