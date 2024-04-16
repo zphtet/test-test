@@ -22,6 +22,52 @@ module.exports = {
       sm: { max: "639px" },
       // => @media (max-width: 639px) { ... }
     },
+    extend: {
+      keyframes: {
+        scaleProgress: {
+          "0%": {
+            transform: "scaleX(0)",
+          },
+          "100%": {
+            transform: "scaleX(1)",
+          },
+        },
+        colorChange: {
+          "0%": {
+            backgroundColor: "red",
+          },
+          "50%": {
+            backgroundColor: "green",
+          },
+          "100%": {
+            backgroundColor: "gold",
+          },
+        },
+        scaleYProgress: {
+          "0%": {
+            transform: "scaleY(0)",
+          },
+          "100%": {
+            transform: "scaleY(1)",
+          },
+        },
+        bounce: {
+          "0%": {
+            transform: "translateY(0vh)",
+          },
+          "100%": {
+            transform: "translateY(-50vh)",
+          },
+        },
+      },
+      animation: {
+        progress: "scaleProgress auto linear , colorChange auto linear",
+        bounce: "bounce auto linear 5 alternate",
+        scaleYProgress: "scaleYProgress auto linear",
+        scaleProgress: "scaleProgress auto linear",
+        colorChange: "colorChange auto linear",
+      },
+    },
   },
   plugins: [],
 };

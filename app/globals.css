@@ -75,3 +75,26 @@
     /* @apply bg-background text-foreground; */
   }
 }
+
+/* @layer components { */
+.post {
+  scroll-timeline: --scale-progress block;
+}
+
+.line {
+  animation: scale auto linear;
+  animation-timeline: --scale-progress;
+}
+
+
+@keyframes scale {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* } */

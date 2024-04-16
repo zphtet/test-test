@@ -47,6 +47,7 @@ export default function RootLayout({
               <Link href={"/table"}>Table</Link>
               <Link href={"/non-recursive"}>Non Recursive</Link>
               <Link href={"/comments"}>Comments</Link>
+              <Link href={"/scroll"}>scroll</Link>
             </div>
             {/* <PageTransitionWrapper>{children}</PageTransitionWrapper> */}
             {children}
