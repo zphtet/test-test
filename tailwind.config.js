@@ -59,6 +59,19 @@ module.exports = {
             transform: "translateY(-50vh)",
           },
         },
+        fadeIn: {
+          "0%": {
+            opacity: 0,
+          },
+          "100%": {
+            opacity: 1,
+          },
+        },
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
+        },
       },
       animation: {
         progress: "scaleProgress auto linear , colorChange auto linear",
@@ -66,6 +79,8 @@ module.exports = {
         scaleYProgress: "scaleYProgress auto linear",
         scaleProgress: "scaleProgress auto linear",
         colorChange: "colorChange auto linear",
+        fadeIn: "fadeIn auto linear",
+        scroll: "scroll 5s linear infinite",
       },
     },
   },

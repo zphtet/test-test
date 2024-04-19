@@ -77,7 +77,7 @@
 }
 
 /* @layer components { */
-.post {
+/* .post {
   scroll-timeline: --scale-progress block;
 }
 
@@ -95,6 +95,87 @@
   to {
     transform: scaleY(1);
   }
-}
+} */
 
 /* } */
+
+
+.scene {
+  width: 210px;
+  height: 140px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  display: flex;
+  gap: 20px;
+  border: 1px solid red;
+}
+
+.carousel__cell {
+  /* position: absolute; */
+  width: 190px;
+  height: 120px;
+  left: 10px;
+  top: 10px;
+}
+
+.carousel__cell:nth-child(1) {
+  background-color: blue;
+  /* transform: rotateY(0deg); */
+}
+
+.carousel__cell:nth-child(2) {
+  background-color: red;
+  /* transform: rotateY(40deg); */
+}
+
+.carousel__cell:nth-child(3) {
+  background-color: green;
+  /* transform: rotateY(80deg); */
+}
+
+.carousel__cell:nth-child(4) {
+  background-color: violet;
+  /* transform: rotateY(120deg); */
+}
+
+.carousel__cell:nth-child(5) {
+  background-color: brown;
+  /* transform: rotateY(160deg); */
+}
+
+.carousel__cell:nth-child(6) {
+  background-color: orange;
+  /* transform: rotateY(200deg); */
+}
+
+.carousel__cell:nth-child(7) {
+  background-color: aqua;
+  /* transform: rotateY(240deg); */
+}
+
+.carousel__cell:nth-child(8) {
+  background-color: teal;
+  /* transform: rotateY(280deg); */
+}
+
+.carousel__cell:nth-child(9) {
+  background-color: blueviolet;
+  /* transform: rotateY(320deg); */
+}
+
+.scroll-animate {
+  animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}

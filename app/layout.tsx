@@ -48,6 +48,10 @@ export default function RootLayout({
               <Link href={"/non-recursive"}>Non Recursive</Link>
               <Link href={"/comments"}>Comments</Link>
               <Link href={"/scroll"}>scroll</Link>
+              <Link href={"/scroll-view"}>scroll-view</Link>
+              <Link href={"/nba-team"}>NBA Team</Link>
+              <Link href={"/carousel"}>Carousel</Link>
+              <Link href={"/text-ani"}>text-ani</Link>
             </div>
             {/* <PageTransitionWrapper>{children}</PageTransitionWrapper> */}
             {children}
