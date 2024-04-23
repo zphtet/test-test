@@ -54,6 +54,7 @@ export default function RootLayout({
               <Link href={"/carousel"}>Carousel</Link>
               <Link href={"/text-ani"}>text-ani</Link>
               <Link href={"/quill"}>Quill</Link>
+              <Link href={"/foot-fix"}>foot-fix</Link>
             </div>
             {/* <PageTransitionWrapper>{children}</PageTransitionWrapper> */}
             {children}
