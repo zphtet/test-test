@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -178,4 +179,16 @@
   to {
     transform: translate(calc(-50% - 0.5rem));
   }
+}
+
+.ql-editor {
+  min-height: 200px;
+}
+
+/* .ql-align-right {
+  text-align: right;
+} */
+
+.prose {
+  max-width: 100% !important;
 }
