@@ -89,6 +89,7 @@ export function DataTable<TData, TValue>({
     // onPaginationChange
     getCoreRowModel: getCoreRowModel(),
   });
+
   console.log(
     "****************************************************************"
   );
@@ -103,21 +104,53 @@ export function DataTable<TData, TValue>({
       return accum;
     }, {});
 
+  console.log("org datas", idDatas);
+
   const allSelected = useMemo(() => isAllrowSeleted, [isAllrowSeleted]);
 
-  useEffect(() => {
-    setState((prev) => ({
-      ...prev,
-      prevIndex: prev.pageIndex,
-      pageIndex: pagination.pageIndex,
-    }));
-  }, [pagination.pageIndex]);
+  const memoData = useMemo(() => idDatas, [idDatas]);
+  // pageIndex: 0,
+  // prevIndex: 0,
+  // useEffect(() => {
+  //   setState((prev) => ({
+  //     ...prev,
+  //     prevIndex: prev.pageIndex,
+  //     pageIndex: pagination.pageIndex,
+  //   }));
+  // }, [pagination.pageIndex]);
 
   useEffect(() => {
+    console.log("use effect working");
     if (state.isAllSelected) {
+      console.log("ALL SELECTED");
       table.setRowSelection(idDatas);
+      return;
     }
-  }, [state.isAllSelected, allSelected, isAllrowSeleted]);
+    if (state.unselectMode) {
+      console.log("Unselected Mode");
+      console.log("ID DATAS", idDatas);
+      const copy = { ...idDatas };
+      console.log("Before copy", copy);
+      state.unselectedRowIds.forEach((id) => {
+        if (copy[id]) {
+          delete copy[id];
+        }
+      });
+      console.log("COPY DATA", copy);
+      table.setRowSelection(copy);
+      return;
+    }
+  }, [
+    state.isAllSelected,
+    state,
+    allSelected,
+    state.unselectMode,
+    pagination.pageIndex,
+    loading,
+  ]);
+  // if (loading) {
+  //   return <div>Loading ...</div>;
+  // }
 
   console.log("Selected Rowa", table.getState().rowSelection);
   console.log("All selected", state);

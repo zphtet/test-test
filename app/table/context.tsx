@@ -6,14 +6,22 @@ import {
   useContext,
   useState,
 } from "react";
-
-const initialState = {
-  isAllSelected: false,
-  pageIndex: 0,
-  prevIndex: 0,
+type StateType = {
+  isAllSelected: boolean;
+  unselectedRowIds: [] | number[];
+  unselectMode: boolean;
 };
-type StateType = typeof initialState;
 
+const initialState: StateType = {
+  isAllSelected: false,
+  unselectedRowIds: [],
+  unselectMode: false,
+};
+
+// type ProviderType = {
+//   state: StateType;
+//   setState: React.Dispatch<SetStateAction<StateType>>;
+// };
 type ProviderType = {
   state: StateType;
   setState: React.Dispatch<SetStateAction<StateType>>;

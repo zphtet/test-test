@@ -37,13 +37,34 @@ export const columns: ColumnDef<Payment>[] = [
         />
       );
     },
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
+    cell: ({ row }) => {
+      const { state, setState } = useTableContext();
+
+      const uncheckedHandler = () => {
+        if (state.isAllSelected || state.unselectMode) {
+          console.log("unselected roes", row.id);
+          setState((prev) => ({
+            ...prev,
+            isAllSelected: false,
+            unselectMode: true,
+            unselectedRowIds: [
+              ...prev.unselectedRowIds,
+              row.id as unknown as number,
+            ],
+            // unselectedRowIds: [row.id],
+          }));
+        }
+      };
+
+      return (
+        <Checkbox
+          checked={row.getIsSelected()}
+          onClick={uncheckedHandler}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label="Select row"
+        />
+      );
+    },
     enableSorting: false,
     enableHiding: false,
   },
