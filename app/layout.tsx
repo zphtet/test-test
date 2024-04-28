@@ -55,6 +55,7 @@ export default function RootLayout({
               <Link href={"/text-ani"}>text-ani</Link>
               <Link href={"/quill"}>Quill</Link>
               <Link href={"/foot-fix"}>foot-fix</Link>
+              <Link href={"/stagger"}>stagger</Link>
             </div>
             {/* <PageTransitionWrapper>{children}</PageTransitionWrapper> */}
             {children}
