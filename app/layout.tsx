@@ -59,6 +59,7 @@ export default function RootLayout({
                 <Link href={"/quill"}>Quill</Link>
                 <Link href={"/foot-fix"}>foot-fix</Link>
                 <Link href={"/stagger"}>stagger</Link>
+                <Link href={"/shared-layout"}>Shared Layout Animation</Link>
               </div>
               {/* <PageTransitionWrapper>{children}</PageTransitionWrapper> */}
               {children}
