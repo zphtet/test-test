@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { motion, Variants, LayoutGroup, AnimatePresence } from "framer-motion";
 import { ArrowBigLeft, Trash } from "lucide-react";
