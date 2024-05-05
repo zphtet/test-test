@@ -8,6 +8,9 @@ const initialMsg: msgType = {
 let msgs: [] | msgType[] = [initialMsg];
 
 export async function GET(request: Request) {
+  return Response.json("Error", {
+    status: 500,
+  });
   return Response.json({
     data: msgs,
   });

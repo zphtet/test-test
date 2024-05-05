@@ -2,19 +2,29 @@
 
 import { useEffect, useState } from "react";
 import { msgType } from "../api/poll/route";
-const fetchMsgs = async () => {
-  try {
-    const res = await fetch("/api/poll");
-    const data = await res.json();
-    return data.data;
-  } catch (e) {
-    console.log("Error fetching new msgs", e);
-  }
-};
 
 const DisplayMsgs = () => {
   const [messages, setMessages] = useState<[] | msgType[]>([]);
 
+  let numOfTries = 0;
+  const backOffTime = 5000;
+  const fetchMsgs = async () => {
+    try {
+      const res = await fetch("/api/poll");
+      if (res.status >= 400) {
+        throw new Error(res.statusText);
+      }
+      const data = await res.json();
+      numOfTries = 0;
+      return data.data;
+    } catch (e) {
+      console.log("Error fetching new msgs", e);
+      numOfTries++;
+      return [];
+    }
+  };
+  console.count("render display");
+  // console.log("numofTries", numOfTries);
   //   FETCH USING RequestAnimationFame
   //   const interval = 3000;
   //   let timeToMakeNextRequest = 0;
@@ -39,8 +49,12 @@ const DisplayMsgs = () => {
       if (timeToMakeNextRequest <= time) {
         console.log("fetching");
         const data = await fetchMsgs();
-        setMessages(data);
-        timeToMakeNextRequest = time + interval;
+        if (data.length > 0) {
+          setMessages(data);
+        }
+
+        console.log("numofTries", numOfTries);
+        timeToMakeNextRequest = time + interval + backOffTime * numOfTries;
       }
 
       requestAnimationFrame(fetchMsgAndStateUpdate);
