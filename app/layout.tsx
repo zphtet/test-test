@@ -62,6 +62,7 @@ export default function RootLayout({
                 <Link href={"/polling"}>polling</Link>
                 <Link href={"/shared-layout"}>Shared Layout Animation</Link>
                 <Link href={"/sidebar"}> SideBar</Link>
+                <Link href={"/drawer"}> Drawer</Link>
               </div>
               {/* <PageTransitionWrapper>{children}</PageTransitionWrapper> */}
               {children}
