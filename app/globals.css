@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -184,9 +183,6 @@
   /* background-image: linear-gradient(90deg, red 0 100px, blue 100px 100%) */
   /* background-image: linear-gradient(red 0%, 25%, orange 25%, yellow 50%, green 75%, blue 100%); */
 
-
-
-
   /* background-image: linear-gradient(in hsl longer hue, red, green, blue) */
   background: linear-gradient(45deg, rgb(221, 89, 89), rgb(117, 117, 247));
 }
@@ -205,4 +201,19 @@
 
 .prose {
   max-width: 100% !important;
+}
+
+.edge::before {
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
+  right: -2px !important;
+}
+
+/* .edge.vertical::before {
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+} */
+
+.edge-vertical::before {
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  rotate: 0deg !important;
+  right: -3px !important;
 }
