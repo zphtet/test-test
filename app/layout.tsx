@@ -64,6 +64,7 @@ export default function RootLayout({
                 <Link href={"/sidebar"}> SideBar</Link>
                 <Link href={"/drawer"}> Drawer</Link>
                 <Link href={"/diagrams"}> Diagrams</Link>
+                <Link href={"/layout-ani"}>Layout Ani</Link>
               </div>
               {/* <PageTransitionWrapper>{children}</PageTransitionWrapper> */}
               {children}

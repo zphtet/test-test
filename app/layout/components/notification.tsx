@@ -42,7 +42,7 @@ const Notifications = () => {
                 },
               }}
               key={item}
-              className="noti-item"
+              className="noti-item px-5 py-5 border border-red-300 rounded-sm"
             >
               {item}
             </motion.div>

@@ -7,8 +7,7 @@ const DiagramOne = () => {
   const Nodes = ["Node one", " Node two", " Node three", " Node four"];
   const parentWidth = isSmallScreen ? 400 : 600;
   const totalHeight = Nodes.length * 46 + (Nodes.length - 1) * 30;
-  console.log("total He", totalHeight);
-  console.log("parent width", parentWidth);
+
   return (
     <div className="grid place-items-center">
       <p>Diagram one</p>
@@ -35,7 +34,7 @@ const DiagramOne = () => {
           </div>
           <div className="flex-1 h-full flex flex-col   justify-between ">
             {Nodes.map((node, idx) => {
-              return <RectNode label={node} key={idx} />;
+              return <RectNode  label={node} key={idx} />;
             })}
           </div>
         </div>
