@@ -2,6 +2,7 @@
 
 import Circle from "./circle";
 import FlexLayout from "./flex";
+import Navigation from "./navigation";
 import SentAni from "./sent";
 
 const LayoutAnimation = () => {
@@ -13,6 +14,9 @@ const LayoutAnimation = () => {
         <FlexLayout />
       </div>
       <Circle />
+      <div className="px-10 py-10">
+        <Navigation />
+      </div>
     </div>
   );
 };
