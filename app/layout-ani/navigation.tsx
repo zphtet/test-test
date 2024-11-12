@@ -43,7 +43,7 @@ const Navigation = () => {
   };
   const [showLinks, setShowLinks] = useState(false);
   return (
-    <div className="fixed bottom-1/2 left-1/2 -translate-x-1/2">
+    <div className="fixed  top-0 left-1/2 -translate-x-1/2">
       {/* <p>hello this is navigation</p> */}
       <AnimatePresence>
         <motion.footer
