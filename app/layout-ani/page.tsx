@@ -3,8 +3,11 @@
 import Circle from "./circle";
 import FavouriteMusic from "./fav-music";
 import FlexLayout from "./flex";
+import MotionPresence from "./motion-presence";
 import Navigation from "./navigation";
+import Numbers from "./numbers";
 import SentAni from "./sent";
+import StickyScroll from "./sticky-scroll";
 
 const LayoutAnimation = () => {
   return (
@@ -21,6 +24,15 @@ const LayoutAnimation = () => {
 
       <div className="p-10 flex items-center justify-center">
         <FavouriteMusic />
+      </div>
+      <div>
+        <StickyScroll />
+      </div>
+      <div>
+        <MotionPresence />
+      </div>
+      <div>
+        <Numbers />
       </div>
     </div>
   );
